@@ -1,0 +1,30 @@
+{% extends "layout.html" %}
+{% block title %}Connexion{% endblock %}
+{% block head %}
+{{ super() }}
+{% endblock %}
+{% block content %}
+<div class="container">
+    <div class="row">
+      <div class="col">
+        Utilisateur inscit sur le site:
+        <table>
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Name</th>
+                    <th>Detail</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>#</td>
+                    <td>Moi</td>
+                    <td><button href="/info">Modifier</button></td>
+                </tr>
+            </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+{% endblock %}
