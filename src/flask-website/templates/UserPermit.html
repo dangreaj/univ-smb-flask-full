@@ -1,5 +1,5 @@
 {% extends "layout.html" %}
-{% block title %}Connexion{% endblock %}
+{% block title %}Liste des Utilisateur{% endblock %}
 {% block head %}
 {{ super() }}
 {% endblock %}
@@ -8,19 +8,19 @@
     <div class="row">
       <div class="col">
         Utilisateur inscit sur le site:
-        <table>
+        <table class="table tbale-hover">
             <thead>
                 <tr>
-                    <th>#</th>
-                    <th>Name</th>
-                    <th>Detail</th>
+                    <th scope="col">#</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Detail</th>
                 </tr>
             </thead>
             <tbody>
                 <tr>
-                    <td>#</td>
+                    <td scope="row">1</td>
                     <td>Moi</td>
-                    <td><button href="/info">Modifier</button></td>
+                    <td><a class="btn btn-outline-info" href="{{url_for('info')}}">Information</a></td>
                 </tr>
             </tbody>
         </table>
