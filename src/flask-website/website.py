@@ -6,8 +6,9 @@ app = Flask(__name__)
 def start(): 
     return render_template('start.html')
 
-@app.route("/connect")
+@app.route("/connect",methods=['POST'])
 def connect():
+    #appel du site avec son adresse ip et son port avec la route /route?data pour le get
     return render_template('connect.html')
 
 @app.route("/permit")
@@ -19,4 +20,3 @@ def info():
     return render_template ('UserInfo.html')
 
 
-    
