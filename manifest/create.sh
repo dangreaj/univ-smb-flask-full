@@ -1,3 +1,32 @@
+##############
+## IDENTITY ##
+##############
+
+use identity;
+
+DROP TABLE IF EXISTS `auth`;
+CREATE TABLE IF NOT EXISTS `auth`
+(
+    id_user INT NOT NULL REFERENCES user(id_user),
+    login VARCHAR(100) NOT NULL PRIMARY KEY,
+    password VARCHAR(500) NOT NULL
+);
+
+DROP TABLE IF EXISTS `user`;
+CREATE TABLE IF NOT EXISTS `user`
+(
+    id_user INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    nom VARCHAR(100) ,
+    prenom VARCHAR(100),
+    naissance DATE
+);
+
+######################
+## CONFIG GENERATOR ##
+######################
+
+use config_generator;
+
 DROP TABLE IF EXISTS `serveur_web`;
 CREATE TABLE IF NOT EXISTS `serveur_web`
 (

@@ -17,3 +17,6 @@ def permit():
 @app.route("/info")
 def info():
     return render_template ('UserInfo.html')
+
+
+    
