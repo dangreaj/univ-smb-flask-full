@@ -1,3 +1,4 @@
+"""
 import mysql.connector
 
 # Configuration de la connexion à la bdd
@@ -8,3 +9,4 @@ else:
     print("Impossible de se connecter à la base de donnée")
 
 # Ajout d'un utilisateur de bdd
+"""

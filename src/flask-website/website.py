@@ -6,7 +6,7 @@ app = Flask(__name__)
 def start(): 
     return render_template('start.html')
 
-@app.route("/connect",methods=['POST'])
+@app.route("/connect")
 def connect():
     #appel du site avec son adresse ip et son port avec la route /route?data pour le get
     return render_template('connect.html')
@@ -19,4 +19,6 @@ def permit():
 def info():
     return render_template ('UserInfo.html')
 
-
+@app.route("/inscription")
+def inscription():
+    return render_template ('inscription.html')
