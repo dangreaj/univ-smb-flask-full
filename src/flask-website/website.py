@@ -4,12 +4,18 @@ app = Flask(__name__)
 
 @app.route("/")
 def start(): 
-    return render_template('start.html')
-
-@app.route("/connect")
-def connect():
-    #appel du site avec son adresse ip et son port avec la route /route?data pour le get
     return render_template('connect.html')
+
+@app.route("/index", methods=['POST'])
+def index():
+    login = request.form['login']
+    passsword = request.form['password']
+    donnees = list([login,passsword])
+    response = requests.post('http://127.0.0.1:5001/api/recevoir-donnees',json=donnees)
+    if response.ok:         #print(response) -> <Response [200]>
+        return render_template('start.html')
+    else:
+        return render_template('start.html')
 
 @app.route("/permit")
 def permit():
