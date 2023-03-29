@@ -12,7 +12,8 @@ tasks:
       pip install --upgrade pip &&
       sudo apt-get update && 
       sudo apt-get install mariadb-server -y && 
-      sudo /etc/init.d/mysql start
+      sudo /etc/init.d/mysql start &&
+      ./manifest/db.sh
 
 vscode:
   extensions:
