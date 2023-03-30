@@ -5,8 +5,10 @@ from sqlalchemy import create_engine
 from sqlalchemy import select
 from sqlalchemy import table
 from sqlalchemy import text
+import sqlalchemy as db
 
 app = Flask(__name__)
+engine = create_engine("mysql://new_user:password@localhost/identity")
 
 @app.route("/")
 def hello():
@@ -15,32 +17,19 @@ def hello():
 ### Reverra les donnée JSON
 @app.route("/log", methods=['POST'])
 def get_data():
-    '''data = request.json
+    data = request.json
     login = []
     login.insert(0,data[0])
     pwd = data[1]
-    cursor = mydb.cursor()
-    req = "SELECT id_user,login, password FROM identity.auth  WHERE login = %s"(login)
-    cursor.execute(req)
-    rows = cursor.fetchall()
-    res = []
-    for row in rows:
-        result.append({'login': row[0], 'password': row[1]})
-    if (res[0]['password'] == pwd):
-        return True
-    else:
-        return False
-    return "Je viend de API.py"'''
-
-    engine = create_engine("mysql://user:password@localhost/identity")
-
-@app.route("/")
-def start(): 
-
+    cursor = db.cursor()
     with engine.connect() as connection:
-        # use connection.execute(), not engine.execute()
-        # select() now accepts column / table expressions positionally
-        result = connection.execute(text("SELECT * FROM identity;"))
-
-    print(result.fetchall())
-    
+        result = connection.execute(text("SELECT id_user,login, password FROM identity.auth  WHERE login = %s"(login)))
+        rows = result.fetchall()
+        res = []
+        for row in rows:
+            result.append({'login': row[0], 'password': row[1]})
+        if (res[0]['password'] == pwd):
+            return True
+        else:
+            return False
+        return "Je viend de API.py"
