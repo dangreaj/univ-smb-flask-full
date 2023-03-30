@@ -2,6 +2,7 @@
 
 #Intallation mysql-connector
 pip install mysql-connector-python
+pip insatall databases[mysql]
 # Secure root account
 sudo mysql -e "UPDATE mysql.user SET Password = PASSWORD('dangreaj') WHERE User = 'root'"
 # Create database
