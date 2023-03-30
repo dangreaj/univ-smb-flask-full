@@ -7,7 +7,7 @@ use identity;
 ##      ##
 ## USER ##
 ##      ##
-INSERT INTO user (id_user, nom, prenom, naissance) VALUES ('DANGREAUX', 'Jeremy', '1997/05/24');
+INSERT INTO user (nom, prenom, naissance) VALUES ('DANGREAUX', 'Jeremy', '1997/05/24');
 
 ##      ##
 ## AUTH ##
