@@ -17,8 +17,7 @@ def index():
     password = request.form['passwd']
     data = list([login,password])
     response = requests.post(url + "/log", json=data)
-    if response.ok:         #print(response) -> <Response [200]>
-        #ajouter la creation de la variable de session ici
+    if response.ok:
         return render_template('start.html')
     else:
         return render_template('connect.html')

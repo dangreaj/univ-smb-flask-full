@@ -1,7 +1,10 @@
-from flask import Flask, jsonify, request
+from flask import Flask, render_template
 import json
-import mysql.connector
-#from db import mydb
+from sqlalchemy import column
+from sqlalchemy import create_engine
+from sqlalchemy import select
+from sqlalchemy import table
+from sqlalchemy import text
 
 app = Flask(__name__)
 
@@ -10,9 +13,9 @@ def hello():
     return "Hello, API!"
 
 ### Reverra les donnée JSON
-@app.route("/api/log", methods=['POST'])
+@app.route("/log", methods=['POST'])
 def get_data():
-    data = request.json
+    '''data = request.json
     login = []
     login.insert(0,data[0])
     pwd = data[1]
@@ -27,5 +30,17 @@ def get_data():
         return True
     else:
         return False
-    return "Je viend de API.py"
+    return "Je viend de API.py"'''
+
+    engine = create_engine("mysql://user:password@localhost/identity")
+
+@app.route("/")
+def start(): 
+
+    with engine.connect() as connection:
+        # use connection.execute(), not engine.execute()
+        # select() now accepts column / table expressions positionally
+        result = connection.execute(text("SELECT * FROM identity;"))
+
+    print(result.fetchall())
     
